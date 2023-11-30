@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Final Project, Emma Mason, H01, November 30, 2023 -->
+<meta charset="utf-8">
+<title>Parkinson's Disease</title>
+<link rel="stylesheet" href="Project.css">
+<script>
+// the code below was copy pasted to get sparkles that follow the cursor! 
+var standardbody=(document.compatMode=="CSS1Compat")? document.documentElement : document.body //create reference to common "body" across doctypes
+
+var nav = (!document.all || window.opera);
+var tmr = null;
+var spd = 50;
+var x = 0;
+var x_offset = 5;
+var y = 0;
+var y_offset = 15;
+
+document.onmousemove = get_mouse; 
+
+function get_mouse(e)
+{    
+  x = (nav) ? e.pageX : event.clientX+standardbody.scrollLeft;
+  y = (nav) ? e.pageY : event.clientY+standardbody.scrollTop;
+  x += x_offset;
+  y += y_offset;
+  beam(1);     
+}
+
+function beam(n)
+{
+  if(n<5)
+  {
+				document.getElementById('div'+n).style.top=y+'px'
+				document.getElementById('div'+n).style.left=x+'px'
+				document.getElementById('div'+n).style.visibility='visible'
+    n++;
+    tmr=setTimeout("beam("+n+")",spd);
+  }
+  else
+  {
+     clearTimeout(tmr);
+     fade(4);
+  }   
+} 
+
+function fade(n)
+{
+  if(n>0) 
+  {
+				document.getElementById('div'+n).style.visibility='hidden'
+    n--;
+    tmr=setTimeout("fade("+n+")",spd);
+  }
+  else clearTimeout(tmr);
+} 
+
+//The code below allows the quiz results to be checked
+function isitright() {
+if(document.formapple.apple1.check == true)
+{alert("Tremors is correct! This is the symptom most often see in Parkinson's patients.")}
+else
+{alert("Tremors was the right answer. This is a hallmark symptom of Parkinson's Disease")}
+if(document.formapple.apple2.checked)
+{alert("Loss of muscle function is a hallmark of ALS, not Parkinson's disease.")}
+if(document.formapple.apple3.checked)
+{alert("Loss of eyesight is not a hallmark of Parkinson's disease.")}
+if(document.formapple.apple4.checked)
+{alert("Irrregular heartbeat is not the hallmark of Parkinson's disease.")}
+}
+
+</script>
+<style>
+</style>
+
+</head>
+
+<body>
+<!--These are buttons that link back to the other webpages for easy navigation!-->
+<a href="A_ProjectEM.html" target="blank"><button class="pig" style="text-align:center;">Back to the Main Page</button></a>
+<a href="B_ProjectEM.html" target="_blank"><button class="pig">Information on ALS</button></a>
+<a href="D_ProjectEM.html" target="_blank"><button class="pig">Information on Alzheimer's Disease</button></a>
+
+<h1 style="text-align:center; border:solid black;background-color:white;">Parkinson's Disease</h1>
+
+<!--This code embeds a video from Youtube into my website-->
+<div>
+<iframe id="video" width="600" height="400" src="https://www.youtube.com/embed/vrEWNrzhKk8">
+</iframe>
+</div>
+
+<!--Paragraph about Parkinson's disease-->
+<p>
+Parkinson's disease is a neurodegenerative disorder that, as you can see in this video, is characterized by essential tremors of the extremities (like the hands). It is a progressive disorder in which one gradually develops symptoms including the aforementioned tremors, bradykinesia or slowed movement, rigid muscles, impaired posture, and speech challenges and difficulties Many patients also have struggles with mental health and sleeping due to the damage caused to their brain in the course of the disease. In early stages, many patients also have plain affects, displaying little emotion in their face. Patients usually develop Parkinson&#39s disease later in life, and the disease disproportionately affects males over females. It is also a hereditary disease, meaning that individuals with family members diagnosed with disease are at a higher risk of developing it later in life. Similarly to ALS, this is a disease that currently has no cure, but for which many are in development. There are some treatments that can help with symptom management, which I will expand upon in the next paragraph. 
+</p>
+<p>
+The molecular hallmark of Parkinson&#39s disease is the formation of protein aggregates known as Lewy bodies, specifically in the substantia nigra of the brain, which contains many of the neurons that produce dopamine. Dopamine is a neurotransmitter in the brain responsible for sending signals between all of your cells, and it is classified as an excitatory neurotransmitter. In particular, dopamine is extremely involved in emotions like happiness, as well as movement. This is why in Parkinson&#39s disease, loss of motor control and depression are seen overtime, as dopamine levels in the brain gradually decrease over the course of the disease. The protein aggregates are composed of a protein known as a-synuclein; these protein aggregates cause damage to the cells and eventually lead to their death, precipitating the loss of dopamine. One treatment used to manage Parkinson&#39s symptoms is L-DOPA, a precursor to dopamine that can enter the brain through the bloodstream and then gets converted into dopamine. This external dopamine can help to slow down symptom progression to a point, but there comes a point where it is no longer effective. Deep-brain stimulation is also a promising treatment. With this procedure, physicians implant thin metal wires into the brain, which deliver targeted electrical pulses. While the mechanism is not entirely understood, DBS is thought to help normalize electrical currents in the brain. The net result of this is reduced tremors and motor symptoms for Parkinson&#39s patients, allowing them to exist and navigate life much more easily.
+</p>
+<p>
+Michael J Fox is a very famous actor, as seen in the video above, who has struggled with Parkinson&#39s disease. As a result, he has donated lots of money and fundraised many research efforts to develop better tests and potential cures for the disease. Robin Williams also had a similar disease, Lewy Body dementia, which caused him to have Parkinson&#39s-like symptoms (but it also caused greater damage throughout his brain). Ultimately, researchers are making great progress, and there is a lot of hope for a cure for Parkinson&#39s. 
+</p>
+
+
+<!--A form that allows for users to be quizzed on Parkinson's Disease-->
+<form name="formapple">
+Which one of these is a hallmark symptom of Parkinson's Disease?
+<br>
+<br>
+<input type="checkbox" name="apple1">Tremors<br> 
+<input type="checkbox" name="apple2">Loss of muscle function<br> 
+<input type="checkbox" name="apple3">Loss of eyesight<br> 
+<input type="checkbox" name="apple4">Irregular heartbeat<br> 
+<br>
+<input type="button" value="Submit" onclick="isitright()">
+</form>
+
+
+<!--These were copied alongside the Javascript to create the sparkly cursor effect-->
+<DIV ID="div1" CLASS="s1">*</DIV>
+<DIV ID="div2" CLASS="s2">*</DIV>
+<DIV ID="div3" CLASS="s3">*</DIV>
+<DIV ID="div4" CLASS="s4">*</DIV>
+
+<!--This is a reference to the link where I copied my cursor Javascript from-->
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>
+
+<!--This is an unordered list containing my sources for this website-->
+<h3>Sources</h3>
+<ul style="text-align:left;">
+<li><a href="https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055#:~:text=Parkinson's%20disease%20is%20a%20progressive,stiffness%20or%20slowing%20of%20movement." target="_blank">Mayo Clinic: Parkinson's Disease</a>
+</li>
+<br>
+<li><a href="https://www.aans.org/en/Patients/Neurosurgical-Conditions-and-Treatments/Parkinsons-Disease" target="_blank">American Association of Neurological Surgeons: Parkinson's Disease</a>
+</li>
+<br>
+<li><a href="https://www.michaeljfox.org/deep-brain-stimulation" target="_blank">Use of DBS in Parkinson's Disease</a>
+</li>
+<br>
+</ul>
+</body>
+</html>

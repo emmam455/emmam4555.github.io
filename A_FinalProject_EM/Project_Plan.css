@@ -1,0 +1,114 @@
+/* This makes the font color brown throughout the body of the website and makes it size 18 font*/
+body{
+	color:saddlebrown;
+	font-size:18px;
+	
+}
+/* This makes all h1 elements bold*/
+h1{text-decoration: bold;
+    color:palevioletred;
+	
+}
+/* This aligns all div elements so they are centered*/
+div{
+	text-align:center;
+}
+/* This makes all of the h6 elements italicized and centered*/
+h6{
+	text-align:center;
+	font-style:italic;
+}
+/* This makes all of the buttons for navigation the same color and design, so that they pop out on the webpage*/
+button{border: solid black;
+background-color:white;
+color:brown;
+}
+/*Changes the color of unvisited links*/
+a:link {
+  color: peru;
+  background-color:blanchedalmond;
+  border: dotted black;
+}
+
+/*Changes the color of visited links*/
+a:visited {
+  color: maroon;
+  background-color:blanchedalmond;
+  border: dotted black;
+}
+
+/*Changes the color of moused over links*/
+a:hover {
+  color: orchid;
+    background-color:blanchedalmond;
+}
+
+/* The CSS below was copied alongside the Javascript needed to create a colorful sparkle that follows the user's cursor*/
+BODY{
+overflow-x:hidden;
+}
+
+.s1
+{
+  position  : absolute;
+  font-size : 10pt;
+  color     : blue;
+  visibility: hidden;
+}
+
+.s2
+{
+  position  : absolute;
+  font-size : 18pt;
+  color     : red;
+	visibility : hidden;
+}
+
+.s3
+{
+  position  : absolute;
+  font-size : 14pt;
+  color     : gold;
+	visibility : hidden;
+}
+
+.s4
+{
+  position  : absolute;
+  font-size : 12pt;
+  color     : lime;
+	visibility : hidden;
+}
+
+/* The CSS below allows the background color to change as the user stays on the webpage, shifting between five different colors! It includes the keyframes and the body elements below*/
+@keyframes bgcolor {
+    0% {
+        background-color: antiquewhite
+    }
+
+    25% {
+        background-color: aliceblue
+    }
+
+    50% {
+        background-color: azure
+    }
+
+    75% {
+        background-color: lavender
+    }
+
+    100% {
+        background-color: lavenderblush
+    }
+}
+
+body {
+    -webkit-animation: bgcolor 20s infinite;
+    animation: bgcolor 10s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+/* This makes all of the bullet points for the list of sources into a cute brain image!*/
+ul{list-style:url(FinalProject_Images/cutebrain.jpeg);
+   }

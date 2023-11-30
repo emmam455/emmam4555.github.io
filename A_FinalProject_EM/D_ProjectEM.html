@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Final Project, Emma Mason, H01, November 30, 2023 -->
+<meta charset="utf-8">
+<title>Alzheimer's Disease</title>
+<link rel="stylesheet" href="Project.css">
+<script>
+//The code below allows for the "puzzle" created to function as a game!
+var blank="10";
+
+function puzzle(x){
+document.getElementById(blank).src=x.src;
+x.src="FinalProject_Images/white.jpg";
+blank=x.id
+
+}
+
+// the code below was copy pasted to get sparkles that follow the cursor! 
+var standardbody=(document.compatMode=="CSS1Compat")? document.documentElement : document.body //create reference to common "body" across doctypes
+
+var nav = (!document.all || window.opera);
+var tmr = null;
+var spd = 50;
+var x = 0;
+var x_offset = 5;
+var y = 0;
+var y_offset = 15;
+
+document.onmousemove = get_mouse; 
+
+function get_mouse(e)
+{    
+  x = (nav) ? e.pageX : event.clientX+standardbody.scrollLeft;
+  y = (nav) ? e.pageY : event.clientY+standardbody.scrollTop;
+  x += x_offset;
+  y += y_offset;
+  beam(1);     
+}
+
+function beam(n)
+{
+  if(n<5)
+  {
+				document.getElementById('div'+n).style.top=y+'px'
+				document.getElementById('div'+n).style.left=x+'px'
+				document.getElementById('div'+n).style.visibility='visible'
+    n++;
+    tmr=setTimeout("beam("+n+")",spd);
+  }
+  else
+  {
+     clearTimeout(tmr);
+     fade(4);
+  }   
+} 
+
+function fade(n)
+{
+  if(n>0) 
+  {
+				document.getElementById('div'+n).style.visibility='hidden'
+    n--;
+    tmr=setTimeout("fade("+n+")",spd);
+  }
+  else clearTimeout(tmr);
+} 
+
+//The code below is a loop which allows for the calculation of the average age of diagnosis for someone who knows individuals diagnosed with Alzheimer's to compare it to the national average
+totalnum=0;
+i=0;
+num=parseFloat(prompt("How many people do you know with Alzheimer's Disease?"));
+while (i<num)
+{
+age=prompt("Please enter their ages when they were diagnosed approximately!")
+totalnum=totalnum+parseFloat(age);
+i=i+1;
+}
+alert("The average age of the individuals you know diagnosed with Alzheimer's disease was " +totalnum/num+ "! The national average in the United States is around 65 years or older. How did your results compare?");
+
+function display(){
+document.getElementById("alz").style.display="";
+document.getElementById("alz1").style.display="";
+document.getElementById("alz2").style.display="";
+var audio = new Audio ("FinalProject_Images/applause.wav");
+audio.play();
+}
+
+</script>
+<style>
+</style>
+</head>
+
+<body>
+<!--These are buttons that link back to the other webpages for easy navigation!-->
+<a href="A_ProjectEM.html" target="blank"><button class="pig" style="text-align:center;">Back to the Main Page</button></a>
+<a href="B_ProjectEM.html" target="_blank"><button class="pig">Information on ALS</button></a>
+<a href="C_ProjectEM.html" target="_blank"><button class="pig">Information on Parkinson's Disease</button></a>
+<h1 style="text-align:center; border:solid black;background-color:white;">Alzheimer's Disease</h1>
+
+<!--This is a table that allows for the creation of a "puzzle" for the user to match up-->
+<table>
+<tr>
+<th colspan="4">The puzzling case of Alzheimer's Disease... can you solve this puzzle to learn more about what a brain looks like with Alzheimer's?</th>
+</tr>
+<tr>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="7" src="FinalProject_Images/1.jpg" alt="puzzle piece" height="150" width="150"></td>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="8" src="FinalProject_Images/2.jpg" alt="puzzle piece" height="150" width="150"></td>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="9" src="FinalProject_Images/3.jpg" alt="puzzle piece" height="150" width="150"></td>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="10" src="FinalProject_Images/white.jpg" alt="puzzle piece" height="150" width="150"></td>
+</tr>
+<tr>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="1" src="FinalProject_Images/4.jpg" alt="puzzle piece" height="150" width="150"></td>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="2" src="FinalProject_Images/5.jpg" alt="puzzle piece" height="150" width="150"></td>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="3" src="FinalProject_Images/6.jpg" alt="puzzle piece" height="150" width="150"></td>
+</tr>
+<tr>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="4" src="FinalProject_Images/7.jpg" alt="puzzle piece" height="150" width="150"></td>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="5" src="FinalProject_Images/8.jpg" alt="puzzle piece" height="150" width="150"></td>
+	<td height="150" width="150"><img onclick="puzzle(this);" id="6" src="FinalProject_Images/9.jpg" alt="puzzle piece" height="150" width="150"></td>
+</tr>
+</table>
+
+<!--These are buttons that allow the user to progress through the page to learn more about Alzheimer's by displaying the paragraph, while the no button does not display the paragraph and encourages the user to complete the puzzle through an alert.-->
+<h3> Did you complete the puzzle?</h3>
+<input type="button" value="Yes!" onclick="display()" style="border: solid black; background-color:white; color:brown;">
+<input type="button" value="No!" style="border: solid black; background-color:white; color:brown;" onclick="alert('Complete the puzzle!');">
+
+<p style="display:none;" id="alz">
+Congratulations on completing this puzzle! It is now time for you to learn more about Alzheimer&#39s disease. This is one of the most prevalent neurodegenerative disorders in the United States - 6.5 million people in the United States over the age of 65 have this disease, making it the leading cause of dementia. This disease, as a type of dementia, leads to the loss of higher cognitive function and memory, leading to forgetfulness in the short run, and loss of short and long term memories in the long run as well as extreme personality changes. Individuals with Alzheimer&#39s are susceptible to depression and other mental health conditions due to the disease&#39s interaction with the limbic system, the site of memory and emotion in the brain. There are currently no cures for someone diagnosed with Alzheimer&#39s disease, but there are treatments, including a newly improved treatment known as Lecanemab that is thought to help slow the progression of the disease. 
+</p>
+
+<p style="display:none;" id="alz1">
+The molecular mechanism of Alzheimer&#39s disease is still poorly understood. The proteins thought to be involved in the pathology of the disease include tau and B-amyloid.Tau is a protein involved in maintaining the structural integrity of cells like neurons as well as in trafficking other proteins and nutrients throughout the cell via structures known as microtubules. In Alzheimer&#39s disease, this protein forms tangles, as seen in the puzzle. These are thought to lead to the loss of function and death of neurons through loss of structural integrity and trafficking capabilities in the cell. B-amyloid is technically a fragment of a larger protein that is thought to build up and form toxic plaques or clumps in the brain that disrupt normal neural communication, leading to cell death. The combined effect of these two protein pathologies is thought to be what leads to the neuronal death that ultimately results in the full-blown progression of Alzheimer&#39s disease and the cognitive symptoms it causes. Certain genetic precursors have been identified which increase an individual&#39s likelihood of developing Alzheimer&#39s disease, and many of these pathways are associated with metabolism in the body, like the breakdown and usage of fats and glucose. Insulin dysregulation is even thought to be a potential causative agent of the disease. 
+</p>
+
+<p style="display:none;" id="alz2">
+Famous individuals who have suffered from this disease include famous actor Sean Connery. It was also featured in the TV show Grey&#39s Anatomy, with the main character Meredith Grey&#39s mother having Alzheimer&#39s in the show. 
+</p>
+
+
+
+<!--These were copied alongside the Javascript to create the sparkly cursor effect-->
+<DIV ID="div1" CLASS="s1">*</DIV>
+<DIV ID="div2" CLASS="s2">*</DIV>
+<DIV ID="div3" CLASS="s3">*</DIV>
+<DIV ID="div4" CLASS="s4">*</DIV>
+
+<!--This is a reference to the link where I copied my cursor Javascript from-->
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>
+
+<!--This is an unordered list containing my sources for this website-->
+<h3>Sources</h3>
+<ul>
+<li><a href="https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447" target="_blank">Mayo Clinic: Alzheimer's Disease</a>
+</li>
+<br>
+<li><a href="https://www.alzheimers.org.uk/about-dementia/types-dementia/who-gets-alzheimers-disease" target="_blank">Risk factors for Alzheimer's Disease</a>
+</li>
+<br>
+<li><a href="https://www.alz.org/alzheimers-dementia/treatments" target="_blank">Treatments for Alzheimer's Disease</a>
+</li>
+<br>
+</ul>
+</body>
+</html>

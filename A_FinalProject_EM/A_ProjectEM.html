@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Final Project, Emma Mason, H01, November 30, 2023 -->
+<meta charset="utf-8">
+<title>Inside your Brain</title>
+<link rel="stylesheet" href="Project.css">
+<script>
+//Copy pasted from a Javascript site!!
+var standardbody=(document.compatMode=="CSS1Compat")? document.documentElement : document.body //create reference to common "body" across doctypes
+
+var nav = (!document.all || window.opera);
+var tmr = null;
+var spd = 50;
+var x = 0;
+var x_offset = 5;
+var y = 0;
+var y_offset = 15;
+
+document.onmousemove = get_mouse; 
+
+function get_mouse(e)
+{    
+  x = (nav) ? e.pageX : event.clientX+standardbody.scrollLeft;
+  y = (nav) ? e.pageY : event.clientY+standardbody.scrollTop;
+  x += x_offset;
+  y += y_offset;
+  beam(1);     
+}
+
+function beam(n)
+{
+  if(n<5)
+  {
+				document.getElementById('div'+n).style.top=y+'px'
+				document.getElementById('div'+n).style.left=x+'px'
+				document.getElementById('div'+n).style.visibility='visible'
+    n++;
+    tmr=setTimeout("beam("+n+")",spd);
+  }
+  else
+  {
+     clearTimeout(tmr);
+     fade(4);
+  }   
+} 
+
+function fade(n)
+{
+  if(n>0) 
+  {
+				document.getElementById('div'+n).style.visibility='hidden'
+    n--;
+    tmr=setTimeout("fade("+n+")",spd);
+  }
+  else clearTimeout(tmr);
+} 
+
+
+</script>
+<style>
+/*The style below gives my image a solid black border*/
+img{border: solid thick black;
+
+}
+/*The style below gives my heading/title of my page a specific style so that it appears in a box at the top of the page*/
+h1{border: solid black;
+background-color:pink;
+text-align:center;
+margin: 50px auto 0 auto;
+
+}
+/*The style below gives my name box a specific style*/
+h6{border: solid black;
+background-color:pink;
+text-align:center;
+margin: 50px auto 0 auto;
+
+}
+
+</style>
+</head>
+<body>
+
+
+<h1>WELCOME TO THE HUMAN BRAIN</h1>
+<h6>A project by Emma Mason</h6>
+<p>Click on various parts of the brain below to learn more about diseases that can affect different parts of this vital organ! Or read on below to learn more about this fascinating organ. If you can't find the links on the brain, you can also click on the buttons below to learn more!</p>
+
+<!-- This code made the brain image an interactive map, if you click on specific parts of the brain it will take you to a website of the brain disorder that corresponds to that region-->
+<div style="text-align:center;">
+<img src="FinalProject_Images/brain.jpg" alt="The brain" usemap="#yourbrain">
+  <map name="yourbrain">
+    <area shape="circle" coords="177,300,50" alt="ALS" title="ALS - the motor cortex" href="B_ProjectEM.html" target="_blank">
+    <area shape="circle" coords="454, 223, 50" alt="Parkinson's" title="Parkinson's Disease - the Substantia Nigra" href="C_projectEM.html" target="_blank">
+    <area shape="circle" coords="281,178,50" alt="Alzheimer's" title="Alzheimer's Disease - the parietal and frontal lobes" href="D_projectEM.html" target="_blank">
+  </map>
+</div>
+<br>
+
+<!-- These links take you to the other websites!-->
+<div>
+<a href="B_ProjectEM.html" target="_blank"><button class="pig">Information on ALS</button></a>
+<a href="D_ProjectEM.html" target="_blank"><button class="pig">Information on Alzheimer's Disease</button></a>
+<a href="C_ProjectEM.html" target="_blank"><button class="pig">Information on Parkinson's Disease</button></a>
+</div>
+
+<!-- Below are paragraphs containing information on the brain-->
+<h3> More on your brain! </h3>
+<p>
+The brain is composed of a variety of cells, the most important of these being neurons. Neurons are responsible for sending signals that allow us to move, sense, and think. The cell body, or soma, of these cells has two types of cytoplasmic extensions that enable it to transmit electrical signals across the body: dendrites that receive information and axons that transmit information through action potentials and release of neurotransmitters. Damage to these cytoplasmic projections disrupts this communication, for example, injury of the spinal cord results in loss of movement and sensation below the injury site. Therefore, it is very important to keep neurons safe and healthy for proper neurological functioning!
+</p>
+
+<p>
+In zooming out, the neurons are the main communicators, but they fall into different categories depending on the region of the brain they occupy. There are 4 primary lobes of the brain, as well as two cortexes and the cerebellum. The lobes are the frontal lobes, the parietal lobes, the temporal lobes, and the occipital lobes. The cortexes are the motor and somatosensory cortex. The cerebellum is responsible for maintaining many autonomic (or automatic) functions of the body, such as breathing and balance! The motor cortex is what coordinates the movement of muscles throughout the body, and the somatosensory cortex allows for the processing of sensations like smell and touch. The various lobes also serve different functions; the frontal lobe is the executive function or "planning" lobe of the brain, the parietal lobes support sensory details from eating and reading, the occipital lobes process visual information, and the temporal lobes help with auditory processing and memories! Another important system is the limbic system, which is the center for emotion and memory processing in the brain and contains the amygdala, hippocampus, and the basal ganglia. 
+</p>
+
+<p>
+In the diseases discussed through this page, neuronal death is one of the key hallmarks of all of them. In each case, a different part of the brain is affected, as seen with the interactive map, but in all cases the damage done to the cells is irreversible, leading to their death and the overall degeneration seen with these diseases. It is important to note that the specific region of the brain impacted directly affects the symptoms of the patient, based on what general functions that region of the brain perform. This degeneration in the brain is usually caused by molecular pathways going awry! Usually, proteins have set functions in your neurons, but in these diseases, those proteins lose their normal function and sometimes gain functions that are harmful for the cell. Please feel free to explore each of the diseases above to learn which proteins are specifically implicated in each.
+</p>
+
+<p>
+All in all, the brain is an amazing organ - weighing in at 3 pounds, it is crazy just how much this single entity of cells can do for you! Interestingly, classical music has been thought to be protective of brain health due to its ability to create new pathways in the brain; that is, new connections between neurons through the aformentioned dendrites and axons. Please check out the music below for some music that might help protect your brain from these diseases!
+</p>
+
+<h3>Some classical music to listen to for your brain health:</h3>
+<!-- Used iframe to embed a musical clip from Spotify!-->
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1CSaCKPIp2yCIDL3t7Fyau?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+<!--These were copied alongside the Javascript to create the sparkly cursor effect-->
+<DIV ID="div1" CLASS="s1">*</DIV>
+<DIV ID="div2" CLASS="s2">*</DIV>
+<DIV ID="div3" CLASS="s3">*</DIV>
+<DIV ID="div4" CLASS="s4">*</DIV>
+
+<!--This is a reference to the link where I copied my cursor Javascript from-->
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>
+
+<!--This is an unordered list containing my sources for this website-->
+<h3>Sources</h3>
+<ul>
+<li><a href="https://link.springer.com/article/10.1007/s40291-023-00654-1" target="_blank">Springer Link Article on Neurodegenerative Disorders</a></li>
+<br>
+<li><a href="https://www.ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-know-your-brain#:~:text=The%20brain%20is%20the%20most,qualities%20that%20define%20our%20humanity." target="_blank">NIH Brain Basics</a></li>
+<br>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5619060/" target="_blank">An article on neuroplasticity and classical music</a></li>
+<br>
+<li><a href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/anatomy-of-the-brain" target="_blank">John's Hopkins: The Brain</a></li>
+<br>
+</ul>
+
+</body>
+</html>

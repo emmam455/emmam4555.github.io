@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Final Project, Emma Mason, H01, November 30, 2023 -->
+<meta charset="utf-8">
+<title>ALS</title>
+<link rel="stylesheet" href="Project.css">
+<script>
+//The code below allows for the swapping of images into the main part of the table to be displayed and also switches the text
+var timer_on;
+function swapImage(brainImage){
+document.getElementById("placeholder").src=brainImage.src;
+document.getElementById("title").innerHTML=brainImage.alt;
+}
+//The code below makes a slideshow that plays when the begin presentation button is pressed and stops when the stop button is pressed
+function startSlideshow (count)
+{
+if (timer_on==false)
+{return}
+
+pig = document.getElementById("img" + count);
+
+swapImage (pig);
+
+new_count = count+1;
+
+if (new_count >4) 
+{new_count =1}
+
+setTimeout ("startSlideshow(new_count)",  4000)
+}
+
+// the code below was copy pasted to get sparkles that follow the cursor! 
+var standardbody=(document.compatMode=="CSS1Compat")? document.documentElement : document.body //create reference to common "body" across doctypes
+
+var nav = (!document.all || window.opera);
+var tmr = null;
+var spd = 50;
+var x = 0;
+var x_offset = 5;
+var y = 0;
+var y_offset = 15;
+
+document.onmousemove = get_mouse; 
+
+function get_mouse(e)
+{    
+  x = (nav) ? e.pageX : event.clientX+standardbody.scrollLeft;
+  y = (nav) ? e.pageY : event.clientY+standardbody.scrollTop;
+  x += x_offset;
+  y += y_offset;
+  beam(1);     
+}
+
+function beam(n)
+{
+  if(n<5)
+  {
+				document.getElementById('div'+n).style.top=y+'px'
+				document.getElementById('div'+n).style.left=x+'px'
+				document.getElementById('div'+n).style.visibility='visible'
+    n++;
+    tmr=setTimeout("beam("+n+")",spd);
+  }
+  else
+  {
+     clearTimeout(tmr);
+     fade(4);
+  }   
+} 
+
+function fade(n)
+{
+  if(n>0) 
+  {
+				document.getElementById('div'+n).style.visibility='hidden'
+    n--;
+    tmr=setTimeout("fade("+n+")",spd);
+  }
+  else clearTimeout(tmr);
+} 
+
+
+</script>
+<style>
+/*The style below centers all divs on this page*/
+div{text-align:center;
+
+}
+.center{margin-left:auto;
+margin-right:auto;
+
+
+}
+
+</style>
+</head>
+<body>
+<!--These are buttons that link back to the other webpages for easy navigation!-->
+<a href="A_ProjectEM.html" target="blank"><button class="pig">Back to the Main Page</button></a>
+<a href="D_ProjectEM.html" target="_blank"><button class="pig">Information on Alzheimer's Disease</button></a>
+<a href="C_ProjectEM.html" target="_blank"><button class="pig">Information on Parkinson's Disease</button></a>
+
+<!--This is the table that displays the interactive slideshow, including start and stop buttons for the presentation.-->
+
+<table class="center">
+<h1 style="text-align:center; border:solid black;background-color:white;">Amyotrophic Lateral Sclerosis</h1>
+<tr>
+	<th colspan="4" style="text-decoration:wavy underline;font-size:24px;color:black;">More on ALS</th>
+</tr>
+<tr>
+	<th id="title" colspan="4">Your brain</th>
+</tr>
+<tr>
+	<td colspan="4"><div><img id="placeholder" src="FinalProject_Images/brain.jpg" alt="brain" width="400" height="300"></div></td>
+</tr>
+<tr>
+	<td><div><img id="img1" onclick="timer_on=false; swapImage(this)"  src="FinalProject_Images/mayoclinic.jpg" alt="The research I presented on treatments for ALS at the Mayo Clinic" width="200" height="150"></div></td>
+	<td><div><img id="img2" onclick="timer_on=false; swapImage(this)" src="FinalProject_Images/brainwithals.jpg" alt="A brain comparison between a normal patient and a patient with ALS" width="200" height="150"></div></td>
+	<td><div><img id="img3" onclick="timer_on=false; swapImage(this)" src="FinalProject_Images/tdp43.jpeg" alt="A visualization of TDP-43, the protein that aggregates in ALS" width="200" height="150"></div></td>
+	<td><div><img id="img4" onclick="timer_on=false; swapImage(this)" src="FinalProject_Images/hawking.jpg" alt="Physicist Stephen Hawking, who spent much of his life battling a diagnosis of ALS" width="200" height="150"></div></td>
+</tr>
+<tr>
+<th colspan="4"> <input type="button" value="Begin presentation" onclick="timer_on=true; startSlideshow(1);"></td>
+</tr>
+<tr>
+<th colspan="4"> <input type="button" value="Stop presentation" onclick="timer_on=false"></td>
+</tr>
+</table>
+
+<!--This is a paragraph containing more information on ALS-->
+<p>
+Amyotrophic lateral sclerosis (ALS) and frontotemporal dementia (FTD) are part of a spectrum of pernicious progressive neurodegenerative diseases in which the gradual deterioration and death of neurons throughout the body lead to symptoms ranging from large-scale loss of motor function and muscle control to aphasia or loss of executive function. ALS in particular leads to the loss of motor function, but it can often be accompanied by cognitive deficits as well. Symptoms for ALS patients often start out as weakness in a limb that slowly develops over a period of weeks or months, followed by the development of weakness in another limb. These then progress over time to include muscle twitching and cramping, impairment of arm and leg use, tripping, fatigue, slurred speech, and difficulty breathing. Ultimately, paralysis of the respiratory system is often the cause of death for these patients, and this disease unfortunately currently has a 100% mortality rate due to the lack of a cure for it. There are currently treatments in progress, and I actually worked in a research lab at the Mayo Clinic in Florida where we were trying to develop cures for ALS based on the molecular aspects of the disease. 
+</p>
+<p>
+In looking to the molecular side of the disease, the molecular hallmark of ALS/FTD is TDP-43 pathology, where the normally nuclear RNA-binding protein TDP-43 mislocalizes to the cytoplasm and forms hyperphosphorylated and ubiquitinated insoluble aggregates. Due to the pervasiveness of TDP-43 pathology, with 97% of ALS cases and 45% of FTD cases being due to TDP pathology, as well as a genetic link between TDP-43 and ALS/FTD, it is likely that TDP-43 proteinopathy plays a key role in disease progression and pathogenesis, but the mechanisms and consequences of this interaction are still largely unclear. This pathology in ALS is common across both sporadic patient cases, where the disease arises with no prior family history or genetic precursors, and across familial cases, making it a promising target for treatments for patients. 
+</p>
+<p>
+Famous individuals who have suffered from this disease include Stephen Hawking and Lou Gehrig, which has also led to the disease being called Lou Gehrig&#39s disease. There was also a fundraiser to fund research for cures for ALS known as the ALS ice bucket challenge that was very popular on social media years ago. 
+</p>
+<p>
+Overall, there are many potential treatments being created for individuals struggling with ALS, and so hopefully one day soon we will have a cure!
+</p>
+
+<!--These were copied alongside the Javascript to create the sparkly cursor effect-->
+<DIV ID="div1" CLASS="s1">*</DIV>
+<DIV ID="div2" CLASS="s2">*</DIV>
+<DIV ID="div3" CLASS="s3">*</DIV>
+<DIV ID="div4" CLASS="s4">*</DIV>
+
+<!--This is a reference to the link where I copied my cursor Javascript from-->
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>
+<h3>Sources</h3>
+<!--This is an unordered list containing my sources for this website-->
+<ul>
+<li><a href="https://www.als.org/understanding-als/what-is-als" target="_blank">Understanding ALS</a>
+</li>
+<br>
+<li><a href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/amyotrophic-lateral-sclerosis-als" target="_blank">Johns Hopkins: ALS</a>
+</li>
+<br>
+<li><a href="https://www.mayoclinic.org/diseases-conditions/amyotrophic-lateral-sclerosis/symptoms-causes/syc-20354022" target="_blank">Mayo Clinic: ALS</a>
+</li>
+<br>
+</ul>
+</body>
+</html>
